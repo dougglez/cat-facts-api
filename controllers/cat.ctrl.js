@@ -28,10 +28,10 @@ async function send(req, res, next) {
 
 function slackMsg(message, res) {
   console.log('message:', message);
-  try {
-    axios.post('http://localhost:8083/api/sendmessage', {message})
-  } catch (err) {
-    console.log('error: ', err);
-  }
+    return axios.post('http://localhost:8083/api/sendmessage', {message})
+      .then(response => res.status(200).send(message))
+      .catch(err => {
+        console.log('error: ', err);
+      })
 
 }
