@@ -30,7 +30,7 @@ function slackMsg(message, res) {
   console.log('message:', message);
   axios.post('http://localhost:8083/api/sendmessage', {message})
     .then(response => {
-      res.sendStatus(200);
+      res.status(200).send('testing');
     })
     .catch(error => {
       console.log(error);
