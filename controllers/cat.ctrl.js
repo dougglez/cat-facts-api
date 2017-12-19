@@ -20,7 +20,7 @@ function get (req, res, next) {
 async function send(req, res, next) {
   console.log('req.body', req.body);
   console.log('req.query', req.query);
-  console.log('\n\nreq... it gonna be big\n\n', req.route.stack);
+  console.log('\n\nreq... it gonna be big\n\n', req);
   try {
     const message = await get(req, res, next);
     slackMsg(message, res)
