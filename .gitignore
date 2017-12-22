@@ -1,3 +1,11 @@
-config/
+
+# Ignoring config files
+config/default.config.js
+# You'll only need to create this if you plan on using massive and saving cat facts to a db
+config/massive.config.js
+
+# Of course...
 node_modules
+
+# Webstorm folders
 .idea/

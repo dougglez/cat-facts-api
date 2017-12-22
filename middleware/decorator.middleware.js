@@ -30,6 +30,7 @@ function decorate(app) {
     allowedHeaders: ["Content-Type", "Authorization"]
   }));
   app.use(bodyP.json());
+  app.use(bodyP.urlencoded({ extended: true }));
 
   return app;
 }

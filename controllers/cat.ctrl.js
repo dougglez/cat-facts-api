@@ -1,4 +1,9 @@
 const axios = require('axios');
+const { slackHook } = require('../config/default.config');
+const SlackMessenger = require('slack-messenger');
+const slackMsg = new SlackMessenger(slackHook);
+
+console.log(slackHook);
 
 module.exports = {
   get,
@@ -24,19 +29,10 @@ async function send(req, res, next) {
   console.log('\n\ntoken?\n\n', req.token);
   try {
     const message = await get(req, res, next);
-    slackMsg(message, res)
+    slackMsg.sendMessage(message);
+    res.sendStatus(200)
   } catch (err) {
     console.log('error:', err);
+    res.status(error.statusCode).send(error.message);
   }
-}
-
-function slackMsg(message, res) {
-  console.log('message:', message);
-    return axios.post('http://localhost:8083/api/sendmessage', {message})
-      .then(response => res.status(200).send(null))
-      .catch(err => {
-        console.log('error: ', err);
-        res.sendStatus(418);
-      })
-
 }
