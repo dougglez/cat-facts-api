@@ -3,11 +3,10 @@ const { slackHook } = require('../config/default.config');
 const SlackMessenger = require('slack-messenger');
 const slackMsg = new SlackMessenger(slackHook);
 
-console.log(slackHook);
-
 module.exports = {
   get,
-  send
+  send,
+  slackMsg
 };
 
 function get (req, res, next) {
@@ -25,7 +24,7 @@ function get (req, res, next) {
 async function send(req, res, next) {
   try {
     const message = await get(req, res, next);
-    slackMsg.sendMessage(message);
+    slackMsg.sendMessage(':cat2: '+message);
     res.status(200).send(null);
   } catch (err) {
     console.log('error:', err);
