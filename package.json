@@ -13,7 +13,7 @@
     "express": "^4.16.2",
     "helmet": "^3.9.0",
     "massive": "^4.5.0",
-    "morgan": "^1.9.0",
+    "morgan": "^1.9.1",
     "slack-messenger": "^0.1.15"
   },
   "devDependencies": {},
